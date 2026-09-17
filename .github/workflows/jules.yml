@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Invoke Jules Agent
         uses: google-labs-code/jules-invoke@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           jules_api_key: ${{ secrets.JULES_API_KEY }}
+          prompt: ${{ github.event.issue.body || github.event.comment.body }}
